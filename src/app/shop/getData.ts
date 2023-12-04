@@ -18,7 +18,7 @@ export const useGetProduct = (category: string) => {
   }, [isProduct]);
 
   useEffect(() => {
-    const q = query(collection(db, "果乾"));
+    const q = query(collection(db, category));
     const unsub = onSnapshot(q, (doc) => {
       doc.docChanges().forEach((doc) => {
         if (doc.type === "modified") {
