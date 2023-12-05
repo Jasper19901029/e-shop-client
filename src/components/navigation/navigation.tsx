@@ -19,7 +19,7 @@ export default function Navigation(): React.ReactNode {
           <p className="text-xs lg:text-3xl">享家蔬果園</p>
         </Link>
       </div>
-      <div className="hidden lg:flex lg:flex-row lg:justify-around items-center mr-4 lg:space-x-4 lg:text-lg">
+      <div className="lg:flex lg:flex-row lg:justify-around items-center mr-4 lg:space-x-4 lg:text-lg">
         <Link href="/about">關於我們</Link>
         <Link href="/shop">購買產品</Link>
         <Link href="/contact">聯絡我們</Link>
