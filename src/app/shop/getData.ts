@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { db, Product } from "@/utils/filebase/firebase";
 import { query, onSnapshot, collection } from "firebase/firestore";
 
+// category: string
 export const useGetProduct = (category: string) => {
-  const [isProduct, setIsProduct] = useState(false);
   const [productData, setProductData] = useState<Product[]>();
 
   useEffect(() => {
@@ -15,20 +15,6 @@ export const useGetProduct = (category: string) => {
     return () => {
       unsub();
     };
-  }, [isProduct]);
-
-  useEffect(() => {
-    const q = query(collection(db, category));
-    const unsub = onSnapshot(q, (doc) => {
-      doc.docChanges().forEach((doc) => {
-        if (doc.type === "modified") {
-          setIsProduct(!isProduct);
-        }
-      });
-    });
-    return () => {
-      unsub();
-    };
-  }, [setIsProduct]);
+  }, []);
   return { productData };
 };

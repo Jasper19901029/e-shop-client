@@ -1,15 +1,12 @@
 import { db, Product } from "@/utils/filebase/firebase";
-import { query, onSnapshot, collection } from "firebase/firestore";
 import { create } from "zustand";
 
 type ProductState = {
-  product: Product[];
-  setProduct: (product: Product[]) => void;
+  product: Product[] | undefined;
+  setProduct: (product: Product[] | undefined) => void;
 };
 
-export const useProductStore = create<ProductState>((set) => ({
+export const useProductStore = create<ProductState>()((set) => ({
   product: [],
-  setProduct: (product) => set({ product }),
+  setProduct: (product) => set((state) => ({ ...state.product, product })),
 }));
-
-console.log(useProductStore);
