@@ -24,9 +24,9 @@ import {
 const firebaseConfig = {
   apiKey: "AIzaSyAizYFDSeXWhvd2m8qSXNDV9oC7T2RAhH0",
   authDomain: "test-back-b4f7e.firebaseapp.com",
-  // projectId: "test-back-b4f7e",
+  projectId: "test-back-b4f7e",
   // 要在非server端執行process.env要在.env內加上NEXT_PUBLIC_的前墜(例如NEXT_PUBLIC_FIREBASE_PROJECTID)，打包時還是會顯示在客戶端，所以secret不要加前墜這樣執行。
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
+  // projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
   storageBucket: "test-back-b4f7e.appspot.com",
   messagingSenderId: "990935080387",
   appId: "1:990935080387:web:5ea46aa8c026c256e27176",
@@ -144,3 +144,33 @@ export const signInAuthUserWithEmailAndPassword = async (
 // signInAuthUserWithEmailAndPassword("test@gmail.com", "123412345").then((data) =>
 //   console.log(data)
 // );
+
+// export const mySub = () => {
+//   return onSnapshot(query(collection(db, "水果")), (doc) => {
+//     doc.docs.map((doc) => doc.data());
+//   });
+// };
+
+// const q = query(collection(db, "水果"));
+// const unsub = onSnapshot(q, (doc) => {
+//   setProduct(doc.docs.map((doc) => doc.data()) as Product[]);
+// });
+
+// export const mySub = async (): Promise<Product[]> => {
+//   const data: Product[] = []; // 儲存資料的陣列
+
+//   return new Promise<Product[]>((resolve) => {
+//     const unsubscribe = onSnapshot(
+//       query(collection(db, "水果")),
+//       (snapshot) => {
+//         data.length = 0;
+//         snapshot.docs.map((doc) => {
+//           const product = doc.data() as Product;
+//           data.push(product);
+//         }),
+//           unsubscribe();
+//         resolve(data);
+//       }
+//     );
+//   });
+// };
