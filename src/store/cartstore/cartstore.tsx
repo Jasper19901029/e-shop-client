@@ -1,0 +1,74 @@
+import { create } from "zustand";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
+
+type Cart = {
+  name: string;
+  price: number;
+  quantity: number;
+  productUrl: string;
+};
+
+type CartStore = {
+  cart: Cart[];
+  addToCart: (addItemToCart: Cart) => void;
+  removeFromCart: (removeItemFromCart: Cart) => void;
+  clearCart: (clearItemFromCart: Cart) => void;
+};
+
+const addToCart = (cart: Cart[], addItemToCart: Cart): Cart[] => {
+  const findItemFromCart = cart.find(
+    (item) => item.name === addItemToCart.name
+  );
+  if (findItemFromCart) {
+    return cart.map((item) => {
+      return item.name === addItemToCart.name
+        ? { ...item, quantity: item.quantity + 1 }
+        : item;
+    });
+  }
+  return [...cart, { ...addItemToCart, quantity: 1 }];
+};
+
+const removeFromCart = (cart: Cart[], removeItemFromCart: Cart): Cart[] => {
+  const findItemFromCart = cart.find(
+    (item) => item.name === removeItemFromCart.name
+  );
+  if (findItemFromCart && findItemFromCart.quantity === 1) {
+    return cart.filter((item) => item.name !== removeItemFromCart.name);
+  }
+  return cart.map((item) => {
+    return item.name === removeItemFromCart.name
+      ? { ...item, quantity: item.quantity - 1 }
+      : item;
+  });
+};
+
+const clearFromCart = (cart: Cart[], clearItemFromCart: Cart): Cart[] => {
+  return cart.filter((item) => item.name !== clearItemFromCart.name);
+};
+
+export const useCartStore = create<CartStore>()(
+  devtools(
+    persist(
+      (set) => ({
+        cart: [],
+        addToCart: (addItemToCart: Cart) =>
+          set((state) => ({
+            ...state,
+            cart: addToCart(state.cart, addItemToCart),
+          })),
+        removeFromCart: (removeItemFromCart: Cart) =>
+          set((state) => ({
+            ...state,
+            cart: removeFromCart(state.cart, removeItemFromCart),
+          })),
+        clearCart: (clearItemFromCart: Cart) =>
+          set((state) => ({
+            ...state,
+            cart: clearFromCart(state.cart, clearItemFromCart),
+          })),
+      }),
+      { name: "cart-storage", storage: createJSONStorage(() => sessionStorage) }
+    )
+  )
+);

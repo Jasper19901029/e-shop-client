@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Product } from "@/utils/filebase/firebase";
+import { Product } from "@/utils/firebase/firebase";
 import Link from "next/link";
+
+import { useCartStore } from "@/store/cartstore/cartstore";
 
 export default function Product({
   name,
@@ -10,6 +12,8 @@ export default function Product({
   productUrl,
   category,
 }: Product): React.ReactNode {
+  const { cart, addToCart } = useCartStore();
+
   return (
     <div className="border border-black space-y-2">
       <Link href={`/shop/${category}/${name}`} className="">
@@ -26,11 +30,11 @@ export default function Product({
       </Link>
       <p>{isSell ? price : ""}</p>
       <button
+        onClick={() => addToCart({ name, price, quantity: 1, productUrl })}
         disabled={isSell ? false : true}
-        className={`${isSell ? "" : "bg-red-500"}`}>
-        {isSell ? "加入購物車" : "暫無銷售"}
+        className={`${isSell ? "" : "bg-red-500 text-xs"}`}>
+        {isSell ? "加入購物車" : "非產季 暫無銷售"}
       </button>
-      <p>{isSell ? null : "非產季"}</p>
     </div>
   );
 }
