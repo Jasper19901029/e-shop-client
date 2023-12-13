@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { useGetProduct } from "@/app/shop/getData";
 import Product from "./product";
 
@@ -12,6 +12,7 @@ export default function Shop() {
       {fruit.productData?.map((item) => {
         return <Product key={item.name} {...item} />;
       })}
+
       {vege.productData?.map((item) => {
         return <Product key={item.name} {...item} />;
       })}

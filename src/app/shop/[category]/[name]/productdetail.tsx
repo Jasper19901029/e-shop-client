@@ -3,23 +3,24 @@ import React from "react";
 
 import Input from "@/components/input/input";
 import Image from "next/image";
-import { Product } from "@/utils/filebase/firebase";
+import { Product } from "@/utils/firebase/firebase";
+import { useCartStore } from "@/store/cartstore/cartstore";
 
 export default function ProductDetail({
   name,
   price,
   quantity,
   productUrl,
-  type,
-  unit,
-  category,
   introduction,
-  isSell,
   inspectionUrl1,
   inspectionUrl2,
 }: Product): React.ReactNode {
+  const { cart, addToCart } = useCartStore();
   return (
     <div>
+      <button onClick={() => addToCart({ name, price, quantity, productUrl })}>
+        加入購物車
+      </button>
       <p>{name}</p>
       <p>{price}</p>
       <p>{introduction}</p>
@@ -30,7 +31,6 @@ export default function ProductDetail({
       {inspectionUrl2 && (
         <Image src={inspectionUrl2} alt={name} width={100} height={100} />
       )}
-      <button>加入購物車</button>
     </div>
   );
 }
