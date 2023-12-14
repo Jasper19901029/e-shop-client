@@ -1,5 +1,7 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Cart from "@/components/cart/cart";
 export default function Navigation(): React.ReactNode {
   return (
     <div className="flex flex-row items-center justify-between">
@@ -9,8 +11,8 @@ export default function Navigation(): React.ReactNode {
             src="/logo.jpg"
             alt="logo"
             sizes="100px"
-            width={200}
-            height={200}
+            width={100}
+            height={100}
             style={{
               width: "100%",
               height: "100%",
@@ -19,11 +21,11 @@ export default function Navigation(): React.ReactNode {
           <p className="text-xs lg:text-3xl">享家蔬果園</p>
         </Link>
       </div>
-      <div className="lg:flex lg:flex-row lg:justify-around items-center mr-4 lg:space-x-4 lg:text-lg">
+      <div className="flex flex-row justify-around items-center mr-4 space-x-4 lg:text-lg">
         <Link href="/about">關於我們</Link>
         <Link href="/shop">購買產品</Link>
         <Link href="/contact">聯絡我們</Link>
-        <Link href="/cart">結帳</Link>
+        <Cart />
       </div>
     </div>
   );

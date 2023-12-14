@@ -10,9 +10,11 @@ type Cart = {
 
 type CartStore = {
   cart: Cart[];
+  totalPrice: number;
   addToCart: (addItemToCart: Cart) => void;
   removeFromCart: (removeItemFromCart: Cart) => void;
   clearCart: (clearItemFromCart: Cart) => void;
+  addTotalPrice: (totalPrice: number) => void;
 };
 
 const addToCart = (cart: Cart[], addItemToCart: Cart): Cart[] => {
@@ -47,11 +49,22 @@ const clearFromCart = (cart: Cart[], clearItemFromCart: Cart): Cart[] => {
   return cart.filter((item) => item.name !== clearItemFromCart.name);
 };
 
+export const calculateTotalPrice = (
+  totalPrice: number,
+  cart: Cart[]
+): number => {
+  console.log("inside fuc", totalPrice);
+  return cart.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+};
+
 export const useCartStore = create<CartStore>()(
   devtools(
     persist(
-      (set) => ({
+      (set, get) => ({
         cart: [],
+        totalPrice: 0,
         addToCart: (addItemToCart: Cart) =>
           set((state) => ({
             ...state,
@@ -66,6 +79,10 @@ export const useCartStore = create<CartStore>()(
           set((state) => ({
             ...state,
             cart: clearFromCart(state.cart, clearItemFromCart),
+          })),
+        addTotalPrice: (priceToAdd: number) =>
+          set((state) => ({
+            totalPrice: calculateTotalPrice(priceToAdd, state.cart),
           })),
       }),
       { name: "cart-storage", storage: createJSONStorage(() => sessionStorage) }

@@ -11,16 +11,34 @@ export default function ProductDetail({
   price,
   quantity,
   productUrl,
+  isSell,
   introduction,
   inspectionUrl1,
   inspectionUrl2,
 }: Product): React.ReactNode {
-  const { cart, addToCart } = useCartStore();
+  const { cart, addToCart, addTotalPrice, totalPrice, removeFromCart } =
+    useCartStore();
+  console.log(cart, totalPrice);
   return (
     <div>
-      <button onClick={() => addToCart({ name, price, quantity, productUrl })}>
-        加入購物車
-      </button>
+      {isSell ? (
+        <>
+          <button
+            onClick={() => {
+              addToCart({ name, price, quantity, productUrl });
+              addTotalPrice(price);
+            }}>
+            加入購物車
+          </button>
+          <button
+            onClick={() => {
+              removeFromCart({ name, price, quantity, productUrl });
+              addTotalPrice(price);
+            }}>
+            減少購物車
+          </button>
+        </>
+      ) : null}
       <p>{name}</p>
       <p>{price}</p>
       <p>{introduction}</p>
