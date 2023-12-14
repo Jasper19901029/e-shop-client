@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { useProductStore } from "@/store/productstore/productstore";
 
 export default function Contact(): React.ReactNode {
   return (
