@@ -15,12 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className=" h-full w-full">
+      <body className="h-screen flex flex-col justify-between items-center sm:p-16 text-sm sm:text-xl lg:text-2xl">
         <Navigation />
-        <div>{children}</div>
+        {children}
         <Footer />
       </body>
     </html>
   );
 }
-// h-full w-full lg:basis-[calc(100%-200px)]
+
+//

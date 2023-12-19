@@ -7,6 +7,7 @@ export default function CartIcon() {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="w-10 h-10"
         width={20}
         height={20}>
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -15,7 +16,6 @@ export default function CartIcon() {
           strokeLinecap="round"
           strokeLinejoin="round"></g>
         <g id="SVGRepo_iconCarrier">
-          {" "}
           <path
             d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z"
             stroke="#1C274C"
