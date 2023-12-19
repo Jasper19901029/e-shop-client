@@ -9,7 +9,7 @@ export default function Contact(): React.ReactNode {
       <Link
         href="https://www.facebook.com/p/%E5%85%AD%E9%BE%9C%E4%BA%AB%E5%AE%B6%E8%94%AC%E6%9E%9C%E5%9C%92-100057182841285/?locale=zh_TW"
         target="_blank"
-        className="flex flex-row items-center">
+        className="">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 40 40"

@@ -13,7 +13,7 @@ export default function Page({
   const { category, name } = params;
   const { productData } = useGetProduct(decodeURI(category));
   const filterData = productData?.filter(
-    (product) => product.name === decodeURI(name)
+    (product) => product.productName === decodeURI(name)
   );
   return (
     <div>

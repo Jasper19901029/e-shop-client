@@ -8,13 +8,13 @@ export default function Shop() {
   const vege = useGetProduct("果乾");
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
+    <div className="w-full h-full flex flex-col justify-around items-center sm:grid sm:auto-rows-max sm:grid-cols-3 sm:place-items-center sm:gap-8 sm:mt-4">
       {fruit.productData?.map((item) => {
-        return <Product key={item.name} {...item} />;
+        return <Product key={item.productName} {...item} />;
       })}
 
       {vege.productData?.map((item) => {
-        return <Product key={item.name} {...item} />;
+        return <Product key={item.productName} {...item} />;
       })}
     </div>
   );

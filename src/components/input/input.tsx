@@ -36,20 +36,3 @@ export default function Input({ ...rest }: InputProps): ReactNode {
     </div>
   );
 }
-
-// export default function Input({ ...rest }: InputProps) {
-//   const { htmlFor } = rest;
-//   const { label } = rest;
-//   return forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
-//     ({ className, ...rest }, ref) => {
-//       return (
-//         <div className="">
-//           <label className="mr-2 w-[100px]" htmlFor={htmlFor}>
-//             {label}:
-//           </label>
-//           <input {...rest} className={className} ref={ref} />
-//         </div>
-//       );
-//     }
-//   );
-// }

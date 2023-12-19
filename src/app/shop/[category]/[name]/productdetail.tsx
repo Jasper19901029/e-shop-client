@@ -7,7 +7,7 @@ import { Product } from "@/utils/firebase/firebase";
 import { useCartStore } from "@/store/cartstore/cartstore";
 
 export default function ProductDetail({
-  name,
+  productName,
   price,
   quantity,
   productUrl,
@@ -25,29 +25,39 @@ export default function ProductDetail({
         <>
           <button
             onClick={() => {
-              addToCart({ name, price, quantity, productUrl });
+              addToCart({ productName, price, quantity, productUrl });
               addTotalPrice(price);
             }}>
             加入購物車
           </button>
           <button
             onClick={() => {
-              removeFromCart({ name, price, quantity, productUrl });
+              removeFromCart({ productName, price, quantity, productUrl });
               addTotalPrice(price);
             }}>
             減少購物車
           </button>
         </>
       ) : null}
-      <p>{name}</p>
+      <p>{productName}</p>
       <p>{price}</p>
       <p>{introduction}</p>
-      <Image src={productUrl} alt={name} width={100} height={100} />
+      <Image src={productUrl} alt={productName} width={100} height={100} />
       {inspectionUrl1 && (
-        <Image src={inspectionUrl1} alt={name} width={100} height={100} />
+        <Image
+          src={inspectionUrl1}
+          alt={productName}
+          width={100}
+          height={100}
+        />
       )}
       {inspectionUrl2 && (
-        <Image src={inspectionUrl2} alt={name} width={100} height={100} />
+        <Image
+          src={inspectionUrl2}
+          alt={productName}
+          width={100}
+          height={100}
+        />
       )}
     </div>
   );
