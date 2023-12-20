@@ -7,7 +7,7 @@ export default function CartIcon() {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-10 h-10"
+        className="w-5 h-5 lg:w-7 lg:h-7"
         width={20}
         height={20}>
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>

@@ -8,7 +8,7 @@ export default function Shop() {
   const vege = useGetProduct("果乾");
 
   return (
-    <div className="w-full h-full flex flex-col justify-around items-center sm:grid sm:auto-rows-max sm:grid-cols-3 sm:place-items-center sm:gap-8 sm:mt-4">
+    <div className="flex flex-col justify-around items-center sm:grid sm:grid-cols-3 sm:place-items-center sm:gap-8 space-y-2 sm:space-y-0  mb-12 sm:mt-4">
       {fruit.productData?.map((item) => {
         return <Product key={item.productName} {...item} />;
       })}

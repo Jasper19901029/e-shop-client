@@ -9,9 +9,10 @@ export default function CheckoutPage(): React.ReactNode {
   const { cart, totalPrice, resetCart } = useCartStore();
 
   return (
-    <div className="">
+    <div className="h-screen flex flex-col justify-around items-center xl:flex-row xl:items-center xl:w-full mb-4">
       <Checkoutform />
-      <div>
+      <hr className="w-[1px] h-full hidden xl:block xl:border-r-2 xl:border-black" />
+      <div className="flex flex-col space-y-4 justify-between mt-4">
         {cart.length === 0 ? (
           <p>購物車內沒有商品</p>
         ) : (
@@ -19,7 +20,9 @@ export default function CheckoutPage(): React.ReactNode {
             <Cartincheckout key={item.productName} {...item} />
           ))
         )}
-        <p>Total: ${totalPrice}</p>
+        <p className="underline underline-offset-2 text-end">
+          Total: ${totalPrice}
+        </p>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ export default function Page({
     (product) => product.productName === decodeURI(name)
   );
   return (
-    <div>
+    <div className="relative">
       {filterData === undefined ? (
         <Loading />
       ) : filterData?.length > 0 ? (
