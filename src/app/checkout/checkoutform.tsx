@@ -15,8 +15,8 @@ export default function Checkoutform() {
     }
   }
   return (
-    //   <h2>基本資料</h2>
-    <form action={clientAction}>
+    <form action={clientAction} className="flex flex-col space-y-4">
+      <h2 className="text-xl">訂購人資訊</h2>
       <Input
         label="姓名"
         name="RecipientName"
@@ -41,57 +41,63 @@ export default function Checkoutform() {
         htmlFor="RecipientAddress"
         required
       />
-      <Input
-        label="匯款"
-        name="IsCollection"
-        id="IsCollection"
-        type="radio"
-        htmlFor="IsCollection"
-        value={"N"}
-        required
-      />
-      <Input
-        label="貨到付款"
-        name="IsCollection"
-        id="IsCollection"
-        type="radio"
-        htmlFor="IsCollection"
-        value={"Y"}
-        required
-      />
+      <div className="flex flex-row">
+        <p>付款方式:</p>
+        <Input
+          label="匯款"
+          name="IsCollection"
+          id="IsCollection"
+          type="radio"
+          htmlFor="IsCollection"
+          value={"N"}
+          required
+        />
+        <Input
+          label="貨到付款"
+          name="IsCollection"
+          id="IsCollection"
+          type="radio"
+          htmlFor="IsCollection"
+          value={"Y"}
+          required
+        />
+      </div>
+      <div className="flex flex-row">
+        <p>送貨時間:</p>
+        <Input
+          label="13時前"
+          name="DeliveryTime"
+          id="DeliveryTime"
+          type="radio"
+          htmlFor="DeliveryTime"
+          value={"01"}
+          required
+        />
+        <Input
+          label="14-18時"
+          name="DeliveryTime"
+          id="DeliveryTime"
+          type="radio"
+          htmlFor="DeliveryTime"
+          value={"02"}
+          required
+        />
+        <Input
+          label="不指定"
+          name="DeliveryTime"
+          id="DeliveryTime"
+          type="radio"
+          htmlFor="DeliveryTime"
+          value={"04"}
+          required
+        />
+      </div>
       <Input
         label="備註"
         name="clientMemo"
         id="clientMemo"
         type="text"
         htmlFor="clientMemo"
-      />
-      <Input
-        label="13時前"
-        name="DeliveryTime"
-        id="DeliveryTime"
-        type="radio"
-        htmlFor="DeliveryTime"
-        value={"01"}
-        required
-      />
-      <Input
-        label="14-18時"
-        name="DeliveryTime"
-        id="DeliveryTime"
-        type="radio"
-        htmlFor="DeliveryTime"
-        value={"02"}
-        required
-      />
-      <Input
-        label="不指定"
-        name="DeliveryTime"
-        id="DeliveryTime"
-        type="radio"
-        htmlFor="DeliveryTime"
-        value={"04"}
-        required
       />
       <button type="submit">送出</button>
     </form>

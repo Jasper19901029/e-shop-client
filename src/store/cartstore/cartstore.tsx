@@ -6,6 +6,7 @@ export type Cart = {
   price: number;
   quantity: number;
   productUrl?: string;
+  unit?: string;
 };
 
 type CartStore = {

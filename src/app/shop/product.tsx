@@ -16,30 +16,32 @@ export default function Product({
   const { cart, addToCart, addTotalPrice } = useCartStore();
 
   return (
-    <div className="flex flex-col items-center justify-around space-y-4">
+    <div className="flex flex-col items-center justify-around space-y-2 border-2 border-black p-2">
       <Link href={`/shop/${category}/${productName}`} className="">
         <Image
           src={productUrl}
           alt={productName}
-          width={300}
-          height={200}
+          width={100}
+          height={100}
           sizes="100vw"
-          className="w-[250px] h-auto lg:w-9/12 lg:h-auto"
+          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain"
         />
       </Link>
       <Link href={`/shop/${category}/${productName}`} className="">
         <p className="text-xl lg:text-3xl">{productName}</p>
       </Link>
-      <p className="text-xl lg:text-3xl">{isSell ? `${price} 元 / 件` : ""}</p>
+
+      <p className="text-xl lg:text-3xl">{`${price} 元 / ${unit}`}</p>
+
       <button
         onClick={() => {
-          addToCart({ productName, price, quantity: 1, productUrl });
+          addToCart({ productName, price, quantity: 1, productUrl, unit });
           addTotalPrice(price);
         }}
         disabled={isSell ? false : true}
         className={`${
-          isSell ? " hover:bg-black hover:text-white" : "bg-red-300 font-bold"
-        } text-xl lg:text-3xl border-2 border-black rounded-[8px] `}>
+          isSell ? "hover:bg-black hover:text-white " : "bg-red-300 font-bold "
+        } sm:text-base lg:text-3xl max-w-prose border-2 border-black rounded-[8px]`}>
         {isSell ? "加入購物車" : "非產季 暫無銷售"}
       </button>
     </div>
