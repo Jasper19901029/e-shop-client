@@ -12,6 +12,7 @@ import {
   onSnapshot,
   query,
   addDoc,
+  where,
 } from "firebase/firestore";
 
 import {
@@ -101,15 +102,6 @@ export const editIsSell = async (
 };
 
 //上傳資料到firestore
-export const addNewProduct = async (product: Product): Promise<void> => {
-  try {
-    const collectionRef = collection(db, product.category);
-    await setDoc(doc(collectionRef, product.productName), product);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const addNewOrder = async (
   order: Order
 ): Promise<string | undefined> => {
@@ -127,68 +119,11 @@ export const addNewOrder = async (
   }
 };
 
-export const editOrder = async (
-  id: string,
-  isFinish: boolean,
-  Memo: string,
-  OBTNumber: string
-): Promise<void> => {
+export const getOrder = async (id: string) => {
   const collectionRef = collection(db, "訂單");
-  await updateDoc(doc(collectionRef, id), { isFinish, Memo, OBTNumber });
+  const q = query(collectionRef, where("id", "==", id));
+  const querySnapshot = await getDocs(q);
+  // console.log(querySnapshot.docs[0].data());
+  const data = querySnapshot.docs[0].data();
+  return data;
 };
-
-export const delProduct = async (
-  name: string,
-  category: string
-): Promise<void> => {
-  const collectionRef = collection(db, category);
-  deleteDoc(doc(collectionRef, name));
-};
-
-export const delOrder = async (id: string): Promise<void> => {
-  const collectionRef = collection(db, "訂單");
-  deleteDoc(doc(collectionRef, id));
-};
-
-export const signInAuthUserWithEmailAndPassword = async (
-  email: string,
-  password: string
-) => {
-  if (!email || !password) return;
-
-  return await signInWithEmailAndPassword(auth, email, password);
-};
-
-// signInAuthUserWithEmailAndPassword("test@gmail.com", "123412345").then((data) =>
-//   console.log(data)
-// );
-
-// export const mySub = () => {
-//   return onSnapshot(query(collection(db, "水果")), (doc) => {
-//     doc.docs.map((doc) => doc.data());
-//   });
-// };
-
-// const q = query(collection(db, "水果"));
-// const unsub = onSnapshot(q, (doc) => {
-//   setProduct(doc.docs.map((doc) => doc.data()) as Product[]);
-// });
-
-// export const mySub = async (): Promise<Product[]> => {
-//   const data: Product[] = []; // 儲存資料的陣列
-
-//   return new Promise<Product[]>((resolve) => {
-//     const unsubscribe = onSnapshot(
-//       query(collection(db, "水果")),
-//       (snapshot) => {
-//         data.length = 0;
-//         snapshot.docs.map((doc) => {
-//           const product = doc.data() as Product;
-//           data.push(product);
-//         }),
-//           unsubscribe();
-//         resolve(data);
-//       }
-//     );
-//   });
-// };

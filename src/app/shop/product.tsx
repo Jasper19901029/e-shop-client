@@ -24,7 +24,7 @@ export default function Product({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain"
+          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
         />
       </Link>
       <Link href={`/shop/${category}/${productName}`} className="">

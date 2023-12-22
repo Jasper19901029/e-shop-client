@@ -46,7 +46,17 @@ export default async function handleSub(
   const newOrder = await addNewOrder(order);
 
   if (typeof newOrder === "undefined") {
-    return "error";
+    return;
   }
-  return "感謝您的購買";
+  await fetch("https://notify-api.line.me/api/notify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: "Bearer " + process.env.LINE_NOTIFY_TOKEN,
+    },
+    body: `message=
+新增一筆${order.IsCollection ? "貨到付款" : "匯款"}訂單
+    `,
+  });
+  return newOrder;
 }

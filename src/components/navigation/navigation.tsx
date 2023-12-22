@@ -5,7 +5,7 @@ import Cart from "@/components/cart/cart";
 
 export default function Navigation(): React.ReactNode {
   return (
-    <div className="flex flex-row justify-between w-full p-4">
+    <div className="flex flex-row justify-between w-full m-4 p-4">
       <Link href="/" className="">
         <p className="">享家蔬果園</p>
       </Link>

@@ -19,7 +19,7 @@ export default function ProductDetail({
 }: Product): React.ReactNode {
   const { addToCart, addTotalPrice } = useCartStore();
   return (
-    <div className="flex flex-col items-center justify-around space-y-4">
+    <div className="relative flex flex-col justify-around items-center self-start space-y-4 mb-4">
       {isSell && (
         <div className="w-screen flex flex-row justify-around bg-slate-300 sticky top-0">
           <button
@@ -36,14 +36,14 @@ export default function ProductDetail({
         </div>
       )}
       <p className="font-bold text-3xl">{productName}</p>
-      <p>{introduction}</p>
+      <p className="w-6/12">{introduction}</p>
       <Image
         src={productUrl}
         alt={productName}
         width={100}
         height={100}
         sizes="100vw"
-        className="w-[250px] h-[200px] object-contain"
+        className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
       />
       {inspectionUrl1 && (
         <Image
@@ -52,7 +52,7 @@ export default function ProductDetail({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain"
+          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
         />
       )}
       {inspectionUrl2 && (
@@ -62,7 +62,7 @@ export default function ProductDetail({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain"
+          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
         />
       )}
     </div>

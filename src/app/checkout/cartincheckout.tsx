@@ -10,7 +10,7 @@ export default function Cartincheckout({
 }: Cart) {
   const { addToCart, removeFromCart, addTotalPrice } = useCartStore();
   return (
-    <div className="flex flex-row space-x-4 items-center justify-around">
+    <div className="flex flex-row space-x-4 items-center justify-center justify-items-center">
       {productUrl && (
         <Image
           src={productUrl}
@@ -18,11 +18,11 @@ export default function Cartincheckout({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[50px] h-[50px] lg:w-[150px] lg:h-[150px] object-contain"
+          className="w-[50px] h-[50px] lg:w-[150px] lg:h-[150px] object-contain border-[1px] border-black"
         />
       )}
-      <p>{productName}</p>
-      <p>
+      <p className="grow">{productName}</p>
+      <p className="grow">
         {quantity}pic * ${price}
       </p>
       {/* <div className="flex flex-row space-x-2 w-full col-span-2 place-content-center "> */}

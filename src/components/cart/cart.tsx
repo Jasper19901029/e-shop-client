@@ -30,11 +30,11 @@ const CartDorpdown = ({
     useCartStore();
 
   return (
-    <div className="absolute top-10 right-0 border-2 border-black bg-gray-200 w-[100px] sm:w-[170px] flex flex-col space-y-2">
+    <div className="absolute top-10 right-0 border-2 border-black bg-gray-200 w-[100px] sm:w-[170px] flex flex-col space-y-2 z-50 max-h-44 overflow-y-auto">
       {cart.map((item) => (
         <div
           key={item.productName}
-          className="grid grid-cols-2 justify-items-center  pt-2 px-[1px]">
+          className="grid grid-cols-2 justify-items-center items-center pt-2 px-[1px]">
           {item.productUrl && (
             <Image
               src={item.productUrl}
@@ -42,7 +42,7 @@ const CartDorpdown = ({
               width={100}
               height={100}
               sizes="100vw"
-              className="w-[calc(100/2)] h-[20px] object-contain"
+              className="object-contain pl-2"
             />
           )}
           <p>{item.productName}</p>

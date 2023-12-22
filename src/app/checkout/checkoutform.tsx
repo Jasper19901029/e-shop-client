@@ -1,15 +1,17 @@
 "use client";
 import Input from "@/components/input/input";
 import { useCartStore, Cart } from "@/store/cartstore/cartstore";
-import handleSub from "./handle";
+import handleSub from "./checkoutaction";
+import { redirect } from "next/navigation";
 export default function Checkoutform() {
   const { cart, totalPrice, resetCart } = useCartStore();
   async function clientAction(formData: FormData) {
     const result = await handleSub(cart, totalPrice, formData);
 
-    if (result === "感謝您的購買") {
+    if (result) {
       alert("訂單建立成功");
       resetCart();
+      redirect(`/checkout/${result}`);
     } else {
       alert("訂單建立失敗");
     }
