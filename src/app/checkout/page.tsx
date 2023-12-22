@@ -1,9 +1,7 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { useCartStore } from "@/store/cartstore/cartstore";
 import Cartincheckout from "./cartincheckout";
-import Input from "@/components/input/input";
-import handleSub from "./handle";
 import Checkoutform from "./checkoutform";
 export default function CheckoutPage(): React.ReactNode {
   const { cart, totalPrice, resetCart } = useCartStore();

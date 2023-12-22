@@ -2,7 +2,6 @@
 import { Cart, useCartStore } from "@/store/cartstore/cartstore";
 import { addNewOrder } from "@/utils/firebase/firebase";
 import dayjs from "dayjs";
-import { redirect } from "next/navigation";
 
 export type Order = {
   DeliveryTime: string;
