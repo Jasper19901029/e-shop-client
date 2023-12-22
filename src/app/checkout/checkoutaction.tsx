@@ -47,15 +47,28 @@ export default async function handleSub(
   if (typeof newOrder === "undefined") {
     return;
   }
-  await fetch("https://notify-api.line.me/api/notify", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer " + process.env.LINE_NOTIFY_TOKEN,
-    },
-    body: `message=
-新增一筆${order.IsCollection ? "貨到付款" : "匯款"}訂單
-    `,
-  });
+  if (order.IsCollection === "Y") {
+    await fetch("https://notify-api.line.me/api/notify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${process.env.LINE_NOTIFY_TOKEN}`,
+      },
+      body: `message=
+  新增一筆貨到付款的訂單
+      `,
+    });
+  } else {
+    await fetch("https://notify-api.line.me/api/notify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${process.env.LINE_NOTIFY_TOKEN}`,
+      },
+      body: `message=
+  新增一筆匯款的訂單
+      `,
+    });
+  }
   return newOrder;
 }
