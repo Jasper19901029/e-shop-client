@@ -57,6 +57,7 @@ export default async function handleSub(
       body: `message=
   新增一筆貨到付款的訂單
       `,
+      cache: "no-store",
     });
   } else {
     await fetch("https://notify-api.line.me/api/notify", {
@@ -68,6 +69,7 @@ export default async function handleSub(
       body: `message=
   新增一筆匯款的訂單
       `,
+      cache: "no-store",
     });
   }
   return newOrder;
