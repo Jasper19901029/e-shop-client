@@ -43,7 +43,7 @@ export default function ProductDetail({
         width={100}
         height={100}
         sizes="100vw"
-        className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
+        className="w-[250px] h-[200px] lg:w-[500px] lg:h-[450px] object-contain border-[1px] border-black"
       />
       {inspectionUrl1 && (
         <Image
@@ -52,7 +52,7 @@ export default function ProductDetail({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
+          className="w-[250px] h-[200px] lg:w-[500px] lg:h-[450px] object-contain border-[1px] border-black"
         />
       )}
       {inspectionUrl2 && (
@@ -62,7 +62,7 @@ export default function ProductDetail({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
+          className="w-[250px] h-[200px] lg:w-[500px] lg:h-[450px] object-contain border-[1px] border-black"
         />
       )}
     </div>

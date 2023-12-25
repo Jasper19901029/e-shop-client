@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { notFound } from "next/navigation";
-
+import Loading from "@/components/loading/loading";
 import { useGetProduct } from "@/app/shop/getData";
 import ProductDetail from "./productdetail";
 
@@ -27,7 +27,3 @@ export default function Page({
     </div>
   );
 }
-
-const Loading = (): React.ReactNode => {
-  return <>Loading...</>;
-};

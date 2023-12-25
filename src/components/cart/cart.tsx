@@ -30,7 +30,7 @@ const CartDorpdown = ({
     useCartStore();
 
   return (
-    <div className="absolute top-10 right-0 border-2 border-black bg-gray-200 w-[100px] sm:w-[170px] flex flex-col space-y-2 z-50 max-h-44 overflow-y-auto">
+    <div className="absolute top-10 right-0 static border-2 border-black bg-gray-200 w-[100px] sm:w-[170px] flex flex-col space-y-2 z-50 max-h-44 overflow-y-auto ">
       {cart.map((item) => (
         <div
           key={item.productName}
@@ -72,8 +72,7 @@ const CartDorpdown = ({
       ))}
       <p className="text-right pr-2">Total: ${totalPrice}</p>
       <button
-        className="bg-black text-white hover:bg-white hover:text-black"
-        // className="bg-white text-black hover:bg-black hover:text-white"
+        className="bg-black text-white hover:bg-white hover:text-black sticky bottom-0"
         onClick={() => setIsCartOpen(false)}>
         <Link href={"/checkout"}>結帳</Link>
       </button>

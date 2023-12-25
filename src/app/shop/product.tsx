@@ -24,7 +24,7 @@ export default function Product({
           width={100}
           height={100}
           sizes="100vw"
-          className="w-[250px] h-[200px] lg:w-[300px] lg:h-[300px] object-contain border-[1px] border-black"
+          className="w-[250px] h-[200px] lg:w-[200px] lg:h-[150px] object-contain border-[1px] border-black"
         />
       </Link>
       <Link href={`/shop/${category}/${productName}`} className="">
@@ -41,7 +41,7 @@ export default function Product({
         disabled={isSell ? false : true}
         className={`${
           isSell ? "hover:bg-black hover:text-white " : "bg-red-300 font-bold "
-        } sm:text-base lg:text-3xl max-w-prose border-2 border-black rounded-[8px]`}>
+        } sm:text-base  max-w-prose border-2 border-black rounded-[8px]`}>
         {isSell ? "加入購物車" : "非產季 暫無銷售"}
       </button>
     </div>

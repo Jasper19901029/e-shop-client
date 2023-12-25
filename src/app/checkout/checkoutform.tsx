@@ -101,7 +101,11 @@ export default function Checkoutform() {
         type="text"
         htmlFor="clientMemo"
       />
-      <button type="submit">送出</button>
+      <button
+        className="border-2 border-black rounded-[8px] w-[50px] mx-auto hover:bg-black hover:text-white"
+        type="submit">
+        送出
+      </button>
     </form>
   );
 }
