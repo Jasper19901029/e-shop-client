@@ -6,6 +6,7 @@ import Footer from "@/components/footer/footer";
 export const metadata: Metadata = {
   title: "享家蔬果園",
   description: "享家蔬果園",
+  applicationName: "享家蔬果園",
   verification: {
     google: "_yCLMbuZEdPmxpQA2eIFUPrzscVsFjjH9XFeRbzQCM4",
   },
