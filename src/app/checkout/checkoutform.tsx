@@ -31,7 +31,9 @@ export default function Checkoutform() {
         label="電話"
         name="RecipientMobile"
         id="RecipientMobile"
-        type="text"
+        type="number"
+        min="10"
+        max="10"
         htmlFor="RecipientMobile"
         required
       />
