@@ -123,7 +123,6 @@ export const getOrder = async (id: string) => {
   const collectionRef = collection(db, "訂單");
   const q = query(collectionRef, where("id", "==", id));
   const querySnapshot = await getDocs(q);
-  // console.log(querySnapshot.docs[0].data());
   const data = querySnapshot.docs[0].data();
   return data;
 };

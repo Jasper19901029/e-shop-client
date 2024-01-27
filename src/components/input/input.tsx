@@ -1,18 +1,9 @@
-import { ReactNode, ChangeEvent, forwardRef, InputHTMLAttributes } from "react";
+import { ReactNode, ChangeEvent, ComponentProps } from "react";
+import clsx from "clsx";
 
-export type InputProps = {
+export type InputProps = ComponentProps<"input"> & {
   label: string;
-  name: string;
-  id: string;
   htmlFor: string;
-  required?: true;
-  type: "text" | "number" | "radio" | "email" | "password";
-  placeholder?: string;
-  value?: string | number;
-  defaultValue?: string | number;
-  min?: number;
-  checked?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function Input({ ...rest }: InputProps): ReactNode {
@@ -26,12 +17,15 @@ export default function Input({ ...rest }: InputProps): ReactNode {
   }
   return (
     <div className="">
-      <label className="mr-4 w-[100px]" htmlFor={rest.htmlFor}>
+      <label className="mr-4 w-[100px] inline-block" htmlFor={rest.htmlFor}>
         {rest.label}:
       </label>
       <input
         {...rest}
-        className="lg:appearance-none appearance-none border-2 border-slider border-black rounded-[4px] focus:outline-none focus:border-blue-500"
+        className={clsx(
+          rest.className ? rest.className : "",
+          "appearance-none border-2 border-slider border-black rounded-[4px] focus:outline-none focus:border-blue-500 w-[218px]"
+        )}
       />
     </div>
   );

@@ -61,7 +61,6 @@ export const calculateTotalPrice = (
   totalPrice: number,
   cart: Cart[]
 ): number => {
-  console.log("inside fuc", totalPrice);
   return cart.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);

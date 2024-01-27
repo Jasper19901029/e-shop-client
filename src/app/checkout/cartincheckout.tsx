@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Cart } from "@/store/cartstore/cartstore";
 import Image from "next/image";
