@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/navigation/navigation";
+import MobileNavigation from "@/components/navigation/mobilenav";
 import Footer from "@/components/footer/footer";
 
 export const metadata = {
@@ -25,8 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen flex flex-col justify-between items-center overflow-x-hidden px-4 text-sm sm:text-lg lg:text-xl">
+      <body className="h-screen flex flex-col justify-between items-center overflow-x-hidden px-4 text-xl">
         <Navigation />
+        <MobileNavigation />
         {children}
         <Footer />
       </body>
