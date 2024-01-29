@@ -13,6 +13,7 @@ import {
   query,
   addDoc,
   where,
+  getDoc,
 } from "firebase/firestore";
 
 import {
@@ -21,6 +22,8 @@ import {
   onAuthStateChanged,
   User,
 } from "firebase/auth";
+import { rejects } from "assert";
+import { resolve } from "path";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -125,4 +128,11 @@ export const getOrder = async (id: string) => {
   const querySnapshot = await getDocs(q);
   const data = querySnapshot.docs[0].data();
   return data;
+};
+
+export const getProductForMetaData = async (category: string) => {
+  const collectionRef = await collection(db, category);
+  const data = (await getDocs(collectionRef)).docs.map((doc) => doc.data());
+
+  return data as Product[];
 };

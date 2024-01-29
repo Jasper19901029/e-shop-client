@@ -5,7 +5,10 @@ import MobileNavigation from "@/components/navigation/mobilenav";
 import Footer from "@/components/footer/footer";
 
 export const metadata = {
-  title: "享家蔬果園",
+  title: {
+    template: "享家蔬果園 | %s",
+    default: "享家蔬果園",
+  },
   description: "享家蔬果園",
   keywords: "享家蔬果園",
   creator: "Jasper",
@@ -13,7 +16,6 @@ export const metadata = {
   name: "享家蔬果園",
   url: "https://e-shop-client-alpha.vercel.app/",
   alternateName: "享家蔬果園",
-
   verification: {
     google: "_yCLMbuZEdPmxpQA2eIFUPrzscVsFjjH9XFeRbzQCM4",
   },

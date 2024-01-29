@@ -1,9 +1,26 @@
-"use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Loading from "@/components/loading/loading";
-import { useGetProduct } from "@/app/shop/getData";
-import ProductDetail from "./productdetail";
+import ProductList from "./productlist";
+import { getProductForMetaData } from "@/utils/firebase/firebase";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { category: string; productName: string };
+}) {
+  const products = (
+    await getProductForMetaData(decodeURI(params.category))
+  ).filter((product) => {
+    return product.productName === decodeURI(params.productName);
+  });
+  const { productName, type, introduction } = products[0];
+  return {
+    title: productName,
+    keywords: [productName, type],
+    description: `${productName}:${introduction}`,
+  };
+}
 
 export default function Page({
   params,
@@ -11,19 +28,12 @@ export default function Page({
   params: { category: string; productName: string };
 }): React.ReactNode {
   const { category, productName } = params;
-  const { productData } = useGetProduct(decodeURI(category));
-  const filterData = productData?.filter(
-    (product) => product.productName === decodeURI(productName)
-  );
+
   return (
-    <div className="">
-      {filterData === undefined ? (
-        <Loading />
-      ) : filterData?.length > 0 ? (
-        <ProductDetail {...filterData[0]} />
-      ) : (
-        notFound()
-      )}
-    </div>
+    <>
+      <Suspense fallback={<Loading />}>
+        <ProductList category={category} productName={productName} />
+      </Suspense>
+    </>
   );
 }
