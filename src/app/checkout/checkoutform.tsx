@@ -3,9 +3,20 @@ import Input from "@/components/input/input";
 import { useCartStore, Cart } from "@/store/cartstore/cartstore";
 import handleSub from "./checkoutaction";
 import { redirect } from "next/navigation";
+import { ReactHTMLElement } from "react";
 export default function Checkoutform() {
   const { cart, totalPrice, resetCart } = useCartStore();
+  const checkCellphoneValue = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const pattern = /^\d{0,10}$/;
+    if (!pattern.test(e.target.value)) {
+      e.target.value = "";
+      return alert("請輸入手機號碼10個數字，僅接受數字0-9");
+    }
+  };
   async function clientAction(formData: FormData) {
+    if (cart.length < 1) return alert("購物車內沒有商品");
     const result = await handleSub(cart, totalPrice, formData);
 
     if (result) {
@@ -31,11 +42,12 @@ export default function Checkoutform() {
         label="電話"
         name="RecipientMobile"
         id="RecipientMobile"
-        type="number"
-        min="10"
-        max="10"
+        type="text"
+        minLength={10}
+        maxLength={10}
         htmlFor="RecipientMobile"
         required
+        onChange={checkCellphoneValue}
       />
       <Input
         label="地址"
