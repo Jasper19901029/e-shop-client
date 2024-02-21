@@ -4,26 +4,14 @@ import {
   getFirestore,
   collection,
   doc,
-  setDoc,
   updateDoc,
   getDocs,
-  DocumentData,
-  deleteDoc,
-  onSnapshot,
   query,
   addDoc,
   where,
-  getDoc,
 } from "firebase/firestore";
 
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  User,
-} from "firebase/auth";
-import { rejects } from "assert";
-import { resolve } from "path";
+import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
