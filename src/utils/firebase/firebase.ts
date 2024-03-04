@@ -9,6 +9,7 @@ import {
   query,
   addDoc,
   where,
+  getDoc,
 } from "firebase/firestore";
 
 import { getAuth } from "firebase/auth";
@@ -68,6 +69,28 @@ type Cart = {
   quantity: number;
 };
 
+export type GroupBuyOrder = {
+  id?: string;
+  groupBuyName: string;
+  groupBuyOwner: string;
+  groupBuyProduct: string;
+};
+
+export type Question = {
+  type: "radio" | "text";
+  title: string;
+  required: boolean;
+  questions: string[];
+};
+
+export type FormData = GroupBuyOrder & {
+  answer: boolean;
+  url: string;
+  slug: string;
+  createAt: string;
+  questions: Question[];
+};
+
 //上傳圖片到storage並回傳url
 export const uploadToStorage = async (file: File): Promise<string> => {
   // ref 到指定的儲存空間，後面則是完整檔案名稱
@@ -124,3 +147,30 @@ export const getProductForMetaData = async (category: string) => {
 
   return data as Product[];
 };
+
+export const getGroupbuyForm = async (
+  slug: string
+): Promise<FormData | undefined> => {
+  const collectionRef = collection(db, "團購");
+  // console.log(querySnapshot);
+  // try {
+  //   const q = query(collectionRef, where("slug", "==", slug));
+  //   console.log();
+  //   const querySnapshot = await getDocs(q);
+  // console.log(querySnapshot.docs[0].data());
+  // if (querySnapshot !== undefined) {
+  //   const data = querySnapshot.docs[0].data();
+  //   console.log(data);
+  //   return data;
+  // }
+  // return undefined;
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  const docRef = doc(collectionRef, slug);
+  const data = await getDoc(docRef);
+
+  return data.data() as FormData;
+};
+
+// getGroupbuyForm("Jt0zlsj1aeDVPtDw09PH1");

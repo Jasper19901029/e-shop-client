@@ -28,14 +28,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen flex flex-col justify-between items-center overflow-x-hidden px-4 text-xl">
+      <body className="h-screen flex flex-col justify-between items-center overflow-x-hidden px-4 text-xl bg-gradient-to-r from-indigo-300">
         <Navigation />
         <MobileNavigation />
-        {children}
+        <main className="w-full flex flex-row flex-wrap justify-center">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
   );
 }
-
-//

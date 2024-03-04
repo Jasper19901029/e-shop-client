@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Contact(): React.ReactNode {
   return (
-    <div className=" h-screen flex flex-col items-start space-y-4 justify-center">
+    <main className="h-full flex flex-col items-center space-y-4 justify-center">
       <p>聯絡電話&emsp;0912345678</p>
       <p>匯款帳號&emsp;123456789</p>
       <Link
@@ -37,6 +37,6 @@ export default function Contact(): React.ReactNode {
         </svg>
         <p>FB粉絲頁</p>
       </Link>
-    </div>
+    </main>
   );
 }

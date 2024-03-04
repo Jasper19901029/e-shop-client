@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ProductDetail from "./productdetail";
-import { useGetProduct } from "@/app/shop/getData";
+import { useGetProduct } from "@/app/(e-commerce)/shop/getData";
 import { notFound } from "next/navigation";
 import Loading from "@/components/loading/loading";
 
@@ -17,13 +17,14 @@ export default function ProductList({ category, productName }: Props) {
   );
   return (
     <div className="">
-      {filterData === undefined ? (
+      {/* {filterData === undefined ? (
         <Loading />
       ) : filterData?.length > 0 ? (
         <ProductDetail {...filterData[0]} />
       ) : (
         notFound()
-      )}
+      )} */}
+      {filterData && <ProductDetail {...filterData[0]} />}
     </div>
   );
 }

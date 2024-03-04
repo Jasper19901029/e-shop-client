@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Cart from "@/components/cart/cart";
+import { Button } from "@/components/ui/button";
 
 export default function Navigation(): React.ReactNode {
   return (
@@ -11,15 +11,15 @@ export default function Navigation(): React.ReactNode {
       </Link>
 
       <div className="flex flex-row space-x-6">
-        <Link href="/about" className="hover:underline">
-          關於我們
-        </Link>
-        <Link href="/shop" className="hover:underline">
-          購買產品
-        </Link>
-        <Link href="/contact" className="hover:underline">
-          聯絡我們
-        </Link>
+        <Button variant={"link"}>
+          <Link href="/about">關於我們</Link>
+        </Button>
+        <Button variant={"link"}>
+          <Link href="/shop">購買產品</Link>
+        </Button>{" "}
+        <Button variant={"link"}>
+          <Link href="/contact">聯絡我們</Link>
+        </Button>
         <Cart />
       </div>
     </div>

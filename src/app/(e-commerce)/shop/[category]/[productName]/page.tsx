@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
-import Loading from "@/components/loading/loading";
+// import Loading from "@/components/loading/loading";
+import Loading from "./loading";
 import ProductList from "./productlist";
 import { getProductForMetaData } from "@/utils/firebase/firebase";
 
@@ -14,6 +15,7 @@ export async function generateMetadata({
   ).filter((product) => {
     return product.productName === decodeURI(params.productName);
   });
+  if (products.length < 1) return notFound();
   const { productName, type, introduction } = products[0];
   return {
     title: productName,
