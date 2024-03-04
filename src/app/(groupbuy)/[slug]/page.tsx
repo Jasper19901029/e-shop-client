@@ -9,6 +9,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const groupSlug = await getGroupbuyForm(params.slug);
 
   if (groupSlug === undefined) return <NotFound />;
+  if (!groupSlug.answer) return <NotFound />;
   return (
     <Suspense fallback={<Loading />}>
       <GroupBuyForm groupSlug={groupSlug} />
