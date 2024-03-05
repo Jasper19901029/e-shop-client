@@ -172,5 +172,3 @@ export const getGroupbuyForm = async (
 
   return data.data() as FormData;
 };
-
-// getGroupbuyForm("Jt0zlsj1aeDVPtDw09PH1");
