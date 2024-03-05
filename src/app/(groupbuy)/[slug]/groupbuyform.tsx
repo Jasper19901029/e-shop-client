@@ -16,8 +16,6 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function GroupBuyForm({ groupSlug }: { groupSlug: FormData }) {
-  noStore();
-  // console.log("in form", groupSlug.questions);
   return (
     <Card className="my-20 w-[700px]">
       <CardHeader className="space-y-4">
