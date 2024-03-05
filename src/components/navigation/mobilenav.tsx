@@ -10,7 +10,7 @@ export default function MobileNavigation(): React.ReactNode {
   };
   return (
     <div className="sm:hidden flex flex-row justify-between w-full m-4 p-4">
-      <Link href="/" className="">
+      <Link href="/" className="" onClick={toggleNav}>
         <p className="text-sm">享家蔬果園</p>
       </Link>
 
@@ -20,7 +20,7 @@ export default function MobileNavigation(): React.ReactNode {
         </button>
 
         <div
-          className={`fixed top-16 right-0 h-screen w-full bg-green-100/40 backdrop-blur transition-all duration-300 ease-in-out z-20 ${
+          className={`fixed top-16 right-0 h-screen w-full bg-green-700/80 backdrop-blur transition-all duration-300 ease-in-out z-20 ${
             showNav ? "translate-x-0" : "translate-x-full"
           }`}>
           <div className="flex flex-col items-start space-y-8 mt-8 ml-8">

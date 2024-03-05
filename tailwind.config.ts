@@ -49,11 +49,29 @@ const config = {
             borderRadius: "100%",
           },
         },
+        fadein: {
+          "0%": {
+            opacity: "0.1",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+        fadeout: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         loading: "loading 300ms ease-in-out infinite",
+        fadein: "fadein 200ms ease-in",
+        fadeout: "fadeout 200ms ease-in",
       },
     },
   },

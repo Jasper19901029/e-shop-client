@@ -1,7 +1,5 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { notFound } from "next/navigation";
-// import Loading from "@/components/loading/loading";
-import Loading from "./loading";
 import ProductList from "./productlist";
 import { getProductForMetaData } from "@/utils/firebase/firebase";
 
@@ -33,9 +31,7 @@ export default function Page({
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <ProductList category={category} productName={productName} />
-      </Suspense>
+      <ProductList category={category} productName={productName} />
     </>
   );
 }

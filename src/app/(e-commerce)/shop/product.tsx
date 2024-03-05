@@ -27,7 +27,7 @@ export default function Product({
 
   return (
     // <div className="flex flex-col items-center justify-around space-y-2 border-2 border-black p-2 bg-white">
-    <Card className="">
+    <Card className="animate-fadein">
       <CardHeader>
         <CardTitle>
           <Link href={`/shop/${category}/${productName}`} className="">

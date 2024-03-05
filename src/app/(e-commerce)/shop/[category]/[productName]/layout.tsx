@@ -1,4 +1,3 @@
-import { ResolvingMetadata } from "next";
 import React from "react";
 import { getProductForMetaData } from "@/utils/firebase/firebase";
 
