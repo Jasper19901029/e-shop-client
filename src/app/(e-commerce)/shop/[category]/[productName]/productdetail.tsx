@@ -35,7 +35,7 @@ export default function ProductDetail({
 }: Product): React.ReactNode {
   const { addToCart, addTotalPrice } = useCartStore();
   return (
-    <div className="static flex flex-col lg:flex-row items-start w-full h-full justify-center">
+    <div className="static flex flex-col lg:flex-row items-center w-full h-full justify-center">
       {/* image */}
       <Carousel
         className="max-w-xs "
@@ -73,7 +73,7 @@ export default function ProductDetail({
         <CarouselNext className="w-6 h-6 left-2/3 -bottom-12 bg-slate-100/20" />
       </Carousel>
       {/* content */}
-      <div className="relative w-full my-20 lg:w-2/5 h-[350px] flex flex-col justify-around">
+      <div className="relative w-full my-20 lg:my-0 lg:w-2/5 h-[350px] flex flex-col justify-around">
         <CardHeader>
           <CardTitle>{productName}</CardTitle>
           <CardDescription>

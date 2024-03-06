@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import ProductList from "./productlist";
 import { getProductForMetaData } from "@/utils/firebase/firebase";
+import Loading from "../loading";
 
 export async function generateMetadata({
   params,
@@ -31,7 +32,9 @@ export default function Page({
 
   return (
     <>
-      <ProductList category={category} productName={productName} />
+      <Suspense fallback={<Loading />}>
+        <ProductList category={category} productName={productName} />
+      </Suspense>
     </>
   );
 }

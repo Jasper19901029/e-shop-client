@@ -32,7 +32,7 @@ export default function RootLayout({
         <div className="w-full h-screen flex flex-col justify-between items-center px-4 text-xl bg-gradient-to-r from-indigo-300 overflow-x-hidden">
           <Navigation />
           <MobileNavigation />
-          <main className=" flex flex-row flex-wrap justify-center mb-6">
+          <main className="w-full flex flex-row flex-wrap justify-center mb-6">
             {children}
           </main>
           <Footer />

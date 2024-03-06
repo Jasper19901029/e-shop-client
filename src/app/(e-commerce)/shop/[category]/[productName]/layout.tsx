@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { getProductForMetaData } from "@/utils/firebase/firebase";
+import Loading from "../loading";
 
 // export async function generateMetadata({
 //   params,

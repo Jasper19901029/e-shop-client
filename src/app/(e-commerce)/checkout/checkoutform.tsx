@@ -1,9 +1,12 @@
 "use client";
-import Input from "@/components/input/input";
+// import Input from "@/components/input/input";
 import { useCartStore, Cart } from "@/store/cartstore/cartstore";
 import handleSub from "./checkoutaction";
 import { redirect } from "next/navigation";
-import { ReactHTMLElement } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+
 export default function Checkoutform() {
   const { cart, totalPrice, resetCart } = useCartStore();
   const checkCellphoneValue = (
@@ -28,98 +31,131 @@ export default function Checkoutform() {
     }
   }
   return (
-    <form action={clientAction} className="flex flex-col space-y-4">
-      <h2 className="text-xl">訂購人資訊</h2>
-      <Input
-        label="姓名"
-        name="RecipientName"
-        id="RecipientName"
-        type="text"
-        htmlFor="RecipientName"
-        required
-      />
-      <Input
-        label="電話"
-        name="RecipientMobile"
-        id="RecipientMobile"
-        type="text"
-        minLength={10}
-        maxLength={10}
-        htmlFor="RecipientMobile"
-        required
-        onChange={checkCellphoneValue}
-      />
-      <Input
-        label="地址"
-        name="RecipientAddress"
-        id="RecipientAddress"
-        type="text"
-        htmlFor="RecipientAddress"
-        required
-      />
-      <div className="flex flex-row">
-        <p>付款方式:</p>
+    <form
+      action={clientAction}
+      className="flex flex-col space-y-4 basis-1/2 lg:mr-16">
+      <h2 className="text-2xl font-bold">訂購人資訊</h2>
+      <div className="space-y-2">
+        <Label htmlFor="RecipientName" className="text-lg">
+          姓名
+        </Label>
+        <Input name="RecipientName" id="RecipientName" type="text" required />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="RecipientMobile" className="text-lg">
+          電話
+        </Label>
         <Input
-          label="匯款"
-          name="IsCollection"
-          id="IsCollection"
-          type="radio"
-          htmlFor="IsCollection"
-          value={"N"}
+          name="RecipientMobile"
+          id="RecipientMobile"
+          type="text"
+          minLength={10}
+          maxLength={10}
           required
+          onChange={checkCellphoneValue}
         />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="RecipientAddress" className="text-lg">
+          地址
+        </Label>
         <Input
-          label="貨到付款"
-          name="IsCollection"
-          id="IsCollection"
-          type="radio"
-          htmlFor="IsCollection"
-          value={"Y"}
+          name="RecipientAddress"
+          id="RecipientAddress"
+          type="text"
           required
         />
       </div>
-      <div className="flex flex-row">
-        <p>送貨時間:</p>
-        <Input
-          label="13時前"
-          name="DeliveryTime"
-          id="DeliveryTime"
-          type="radio"
-          htmlFor="DeliveryTime"
-          value={"01"}
-          required
-        />
-        <Input
-          label="14-18時"
-          name="DeliveryTime"
-          id="DeliveryTime"
-          type="radio"
-          htmlFor="DeliveryTime"
-          value={"02"}
-          required
-        />
-        <Input
-          label="不指定"
-          name="DeliveryTime"
-          id="DeliveryTime"
-          type="radio"
-          htmlFor="DeliveryTime"
-          value={"04"}
-          required
-        />
+
+      <div className="flex flex-col space-y-2">
+        <Label className="text-lg">付款方式:</Label>
+        <div className="w-full flex flex-row justify-start items-center">
+          <div className="flex items-center">
+            <Input
+              className="h-4"
+              name="IsCollection"
+              id="IsCollection"
+              type="radio"
+              value={"N"}
+              required
+            />
+            <Label htmlFor="IsCollection" className="w-[120px] text-lg -ml-4">
+              匯款
+            </Label>
+          </div>
+          <div className="flex flex-row justify-center items-center">
+            <Input
+              className="h-4"
+              name="IsCollection"
+              id="IsCollection"
+              type="radio"
+              value={"Y"}
+              required
+            />
+            <Label htmlFor="IsCollection" className="w-[140px] text-lg -ml-4">
+              貨到付款
+            </Label>
+          </div>
+        </div>
       </div>
-      <Input
-        label="備註"
-        name="clientMemo"
-        id="clientMemo"
-        type="text"
-        htmlFor="clientMemo"
-      />
-      <button
-        className="border-2 border-black rounded-[8px] w-[50px] mx-auto hover:bg-black hover:text-white"
+
+      <div className="flex flex-col space-y-2">
+        <Label className="text-lg">送貨時間:</Label>
+        <div className="w-full flex flex-row justify-start items-center">
+          <div className="flex items-center">
+            <Input
+              className="h-4"
+              name="DeliveryTime"
+              id="DeliveryTime"
+              type="radio"
+              value={"01"}
+              required
+            />
+            <Label htmlFor="DeliveryTime" className="w-[120px] text-lg -ml-4">
+              13時前
+            </Label>
+          </div>
+          <div className="flex items-center">
+            <Input
+              className="h-4"
+              name="DeliveryTime"
+              id="DeliveryTime"
+              type="radio"
+              value={"02"}
+              required
+            />
+            <Label htmlFor="DeliveryTime" className="w-[140px] text-lg -ml-4">
+              14-18時
+            </Label>
+          </div>
+          <div className="flex items-center">
+            <Input
+              className="h-4"
+              name="DeliveryTime"
+              id="DeliveryTime"
+              type="radio"
+              value={"04"}
+              required
+            />
+            <Label htmlFor="DeliveryTime" className="w-[120px] text-lg -ml-4">
+              不指定
+            </Label>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="clientMemo" className="text-lg">
+          備註
+        </Label>
+        <Input name="clientMemo" id="clientMemo" type="text" />
+      </div>
+      <Button
+        variant={"ghost"}
+        className="bg-sky-500 hover:bg-sky-400 text-lg"
         type="submit">
         送出
-      </button>
+      </Button>
     </form>
   );
 }

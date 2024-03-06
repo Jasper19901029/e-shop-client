@@ -3,6 +3,18 @@ import React from "react";
 import { Cart } from "@/store/cartstore/cartstore";
 import Image from "next/image";
 import { useCartStore } from "@/store/cartstore/cartstore";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { TiPlus, TiMinus } from "react-icons/ti";
 export default function Cartincheckout({
   productName,
   price,
@@ -11,24 +23,55 @@ export default function Cartincheckout({
 }: Cart) {
   const { addToCart, removeFromCart, addTotalPrice } = useCartStore();
   return (
-    <div className="flex flex-row space-x-4 items-center justify-center justify-items-center">
-      {productUrl && (
-        <Image
-          src={productUrl}
-          alt={productName}
-          width={100}
-          height={100}
-          sizes="100vw"
-          className="w-[50px] h-[50px] lg:w-[150px] lg:h-[150px] object-contain border-[1px] border-black"
-        />
-      )}
-      <p className="grow">{productName}</p>
-      <p className="grow">
-        {quantity}pic * ${price}
-      </p>
+    <>
+      <TableCell className="text-center">
+        {productUrl && (
+          <Image
+            src={productUrl}
+            alt={productName}
+            width={100}
+            height={100}
+            className="mb-2 lg:mb-0"
+          />
+        )}
+        <span className="text-lg lg:hidden">{productName}</span>
+      </TableCell>
+      <TableCell className="hidden text-center lg:table-cell">
+        {productName}
+      </TableCell>
+
+      <TableCell className="w-[100px] text-center">
+        <Button
+          asChild
+          size={"icon"}
+          variant={"ghost"}
+          className=" bg-null"
+          onClick={() => {
+            removeFromCart({ productName, price, quantity });
+            addTotalPrice(price);
+          }}>
+          <TiMinus className="h-6 w-6 hover:text-white" />
+        </Button>
+        <span className="font-bold text-lg h-6 w-6 align-middle mx-1">
+          {quantity}
+        </span>
+        <Button
+          asChild
+          size={"icon"}
+          variant={"ghost"}
+          className="bg-null"
+          onClick={() => {
+            addToCart({ productName, price, quantity });
+            addTotalPrice(price);
+          }}>
+          <TiPlus className="h-6 w-6 hover:text-white" />
+        </Button>
+      </TableCell>
+      <TableCell className="text-center">${price}</TableCell>
+      <TableCell className="text-right">${quantity * price}</TableCell>
       {/* <div className="flex flex-row space-x-2 w-full col-span-2 place-content-center "> */}
-      <button
-        className="border-[1px] border-black w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+      {/* <button
+        className=""
         onClick={() => {
           removeFromCart({ productName, price, quantity });
           addTotalPrice(price);
@@ -36,14 +79,14 @@ export default function Cartincheckout({
         -
       </button>
       <button
-        className="border-[1px] border-black w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
+        className=""
         onClick={() => {
           addToCart({ productName, price, quantity });
           addTotalPrice(price);
         }}>
         +
-      </button>
+      </button> */}
       {/* </div> */}
-    </div>
+    </>
   );
 }
