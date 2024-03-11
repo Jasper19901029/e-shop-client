@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { useFormStatus } from "react-dom";
 
 export default function Checkoutform() {
   const { cart, totalPrice, resetCart } = useCartStore();
@@ -150,12 +152,31 @@ export default function Checkoutform() {
         </Label>
         <Input name="clientMemo" id="clientMemo" type="text" />
       </div>
-      <Button
-        variant={"ghost"}
-        className="bg-sky-500 hover:bg-sky-400 text-lg"
-        type="submit">
-        送出
-      </Button>
+      <SubmitButton />
     </form>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button
+      variant={"ghost"}
+      className="bg-sky-500 hover:bg-sky-400 text-lg"
+      type="submit"
+      disabled={pending}>
+      {pending ? (
+        <div className="bg-sky-500 hover:bg-sky-400 text-lg">
+          <div className="flex flex-row gap-2">
+            <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]" />
+            <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]" />
+            <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]" />
+          </div>
+        </div>
+      ) : (
+        "送出"
+      )}
+    </Button>
   );
 }
